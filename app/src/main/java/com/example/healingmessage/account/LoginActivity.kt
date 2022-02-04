@@ -37,6 +37,7 @@ class LoginActivity : AppCompatActivity() {
 
         binding.textviewRegister.setOnClickListener {
             //intent register activity
+            register()
         }
     }
 
@@ -47,12 +48,18 @@ class LoginActivity : AppCompatActivity() {
             if(task.isSuccessful) {
                 if(FirebaseBaseSingleton.getInstance().checkEmailVerified() == true) {
                     val intent = Intent(this, MainActivity::class.java)
-                    intent.flags = Intent.FLAG_ACTIVITY_NO_ANIMATION
+                    intent.flags = Intent.FLAG_ACTIVITY_NO_HISTORY
                     startActivity(intent)
                 } else {
                     Toast.makeText(this, "이메일 인증을 해주세요.", Toast.LENGTH_SHORT).show()
                 }
             }
         }
+    }
+
+    private fun register() {
+        val intent = Intent(this, RegisterActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NO_HISTORY
+        startActivity(intent)
     }
 }
