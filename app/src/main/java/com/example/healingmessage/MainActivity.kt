@@ -8,14 +8,17 @@ import com.example.healingmessage.calendar.CalendarAdapter
 import com.example.healingmessage.calendar.CalendarData
 import com.example.healingmessage.databinding.ActivityMainBinding
 import java.util.*
-import android.R.string.no
-
-
+import kotlin.collections.ArrayList
 
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var calendarAdapter: CalendarAdapter
+    private var calendarList: ArrayList<CalendarData> = ArrayList<CalendarData>()
+
+    private var num = 0
+
+    private val cal = GregorianCalendar()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,40 +28,49 @@ class MainActivity : AppCompatActivity() {
         binding.calendarView.setHasFixedSize(true)
         binding.calendarView.layoutManager = GridLayoutManager(this, 7)
 
-        // Initialised
-        calendarAdapter = CalendarAdapter()
-        calendarAdapter.notifyDataSetChanged()
-        binding.calendarView.adapter = calendarAdapter
-
-        setCalendarList()
-    }
-
-    private fun setCalendarList() {
-        val calendar: Calendar = Calendar.getInstance()
-
-        val currentYear = calendar.get(Calendar.YEAR)
-        val currentMonth = calendar.get(Calendar.MONTH) + 1// MONTH : 0 ~ 11
-        val currentDay = calendar.get(Calendar.DAY_OF_MONTH)
-
-        calendar.set(currentYear, currentMonth - 1, 1)
-
-        val lastDayOfMonth = calendar.getActualMaximum(Calendar.DAY_OF_MONTH)
-
-        binding.textviewMonth.text =
-            if (currentMonth.toString().length == 1) "0$currentMonth" else currentMonth.toString()
-        binding.textviewYear.text = currentYear.toString()
-
-        val dayNum: Int = calendar.get(Calendar.DAY_OF_WEEK)
-
-
-        //1일 - 요일 매칭 시키기 위해 공백 add
-        for (i in 1 until dayNum) {
-            calendarAdapter.addItem(CalendarData(null, ""))
+        binding.buttonNextMonth.setOnClickListener {
+            setCalendarList(1)
+            calendarAdapter.notifyDataSetChanged()
         }
 
-        //set day
-        for(day in 1..lastDayOfMonth) {
-            calendarAdapter.addItem(CalendarData(this.getDrawable(R.drawable.ic_launcher_foreground), day.toString()))
+        binding.buttonPrevMonth.setOnClickListener {
+            setCalendarList(-1)
+            calendarAdapter.notifyDataSetChanged()
+        }
+
+        // Initialised
+        setCalendarList(0)
+        calendarAdapter = CalendarAdapter(calendarList)
+        calendarAdapter.notifyDataSetChanged()
+        binding.calendarView.adapter = calendarAdapter
+    }
+
+    private fun setCalendarList(num: Int) {
+        calendarList.clear()
+
+        cal.add(Calendar.MONTH, num)
+
+        val calendar =
+            GregorianCalendar(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), 1, 0, 0, 0)
+        binding.textviewMonth.text =
+            if ((cal.get(Calendar.MONTH) + 1).toString().length == 1) "0${cal.get(Calendar.MONTH) + 1}" else {
+                (cal.get(Calendar.MONTH) + 1).toString()
+            }.toString()
+        binding.textviewYear.text = cal.get(Calendar.YEAR).toString()
+
+        val dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK)
+        val max = calendar.getActualMaximum(Calendar.DAY_OF_MONTH)
+
+        for (j in 1 until dayOfWeek) {
+            calendarList.add(CalendarData(null, ""))
+        }
+        for (j in 1..max) {
+            calendarList.add(
+                CalendarData(
+                    this.getDrawable(R.drawable.ic_launcher_foreground),
+                    j.toString()
+                )
+            )
         }
     }
 }

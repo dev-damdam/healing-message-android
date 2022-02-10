@@ -5,8 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.healingmessage.databinding.CalendarItemBinding
 
-class CalendarAdapter: RecyclerView.Adapter<CalendarViewHolder>() {
-    private var dateList: ArrayList<CalendarData> = ArrayList<CalendarData>()
+class CalendarAdapter(private var calendarList: ArrayList<CalendarData>): RecyclerView.Adapter<CalendarViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CalendarViewHolder {
         val binding = CalendarItemBinding.inflate(LayoutInflater.from(parent.context))
 
@@ -14,14 +13,18 @@ class CalendarAdapter: RecyclerView.Adapter<CalendarViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: CalendarViewHolder, position: Int) {
-        holder.bind(dateList[position])
+        holder.bind(calendarList[position])
     }
 
     override fun getItemCount(): Int {
-        return dateList.size
+        return calendarList.size
+    }
+
+    fun setCalendarList(calendarList: ArrayList<CalendarData>) {
+        this.calendarList = calendarList
     }
 
     fun addItem(item: CalendarData) {
-        dateList.add(item)
+        calendarList.add(item)
     }
 }
