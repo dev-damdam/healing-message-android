@@ -14,6 +14,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -33,6 +34,7 @@ class LoginActivity : AppCompatActivity() {
 
         binding.textviewFindPassword.setOnClickListener {
             //find password
+            findPassword()
         }
 
         binding.textviewRegister.setOnClickListener {
@@ -42,7 +44,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun login() {
-        val res = FirebaseBaseSingleton.getInstance().login(this, "dev.sodam@gmail.com", "test123!")
+        val res = FirebaseBaseSingleton.getInstance().login("dev.sodam@gmail.com", "test123!")
 
         res?.addOnCompleteListener { task ->
             if(task.isSuccessful) {
@@ -55,6 +57,12 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun findPassword() {
+        val intent = Intent(this, ResetPasswordActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NO_HISTORY
+        startActivity(intent)
     }
 
     private fun register() {

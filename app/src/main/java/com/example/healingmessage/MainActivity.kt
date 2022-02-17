@@ -16,8 +16,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var calendarAdapter: CalendarAdapter
     private var calendarList: ArrayList<CalendarData> = ArrayList<CalendarData>()
 
-    private var num = 0
-
     private val cal = GregorianCalendar()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,15 +41,17 @@ class MainActivity : AppCompatActivity() {
         calendarAdapter = CalendarAdapter(calendarList)
         calendarAdapter.notifyDataSetChanged()
         binding.calendarView.adapter = calendarAdapter
+
+        Toast.makeText(this, "test", Toast.LENGTH_SHORT).show()
     }
 
     private fun setCalendarList(num: Int) {
         calendarList.clear()
-
         cal.add(Calendar.MONTH, num)
 
         val calendar =
             GregorianCalendar(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), 1, 0, 0, 0)
+
         binding.textviewMonth.text =
             if ((cal.get(Calendar.MONTH) + 1).toString().length == 1) "0${cal.get(Calendar.MONTH) + 1}" else {
                 (cal.get(Calendar.MONTH) + 1).toString()
@@ -59,11 +59,13 @@ class MainActivity : AppCompatActivity() {
         binding.textviewYear.text = cal.get(Calendar.YEAR).toString()
 
         val dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK)
+
         val max = calendar.getActualMaximum(Calendar.DAY_OF_MONTH)
 
         for (j in 1 until dayOfWeek) {
             calendarList.add(CalendarData(null, ""))
         }
+
         for (j in 1..max) {
             calendarList.add(
                 CalendarData(

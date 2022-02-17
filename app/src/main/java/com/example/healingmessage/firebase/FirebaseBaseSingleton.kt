@@ -83,8 +83,12 @@ class FirebaseBaseSingleton {
             }
     }
 
-    fun login(context: Context, email: String, password: String): Task<AuthResult>? {
+    fun login(email: String, password: String): Task<AuthResult>? {
         return auth?.signInWithEmailAndPassword(email, password)
+    }
+
+    fun resetPassword(email: String): Task<Void>? {
+        return auth?.sendPasswordResetEmail(email)
     }
 
     fun checkEmailVerified(): Boolean? {
