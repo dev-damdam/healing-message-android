@@ -12,6 +12,8 @@
         <entry key="..\:/HealingMessage/app/src/main/res/layout/activity_register.xml" value="0.25" />
         <entry key="..\:/HealingMessage/app/src/main/res/layout/activity_reset_password.xml" value="0.1" />
         <entry key="..\:/HealingMessage/app/src/main/res/layout/calendar_item.xml" value="0.5" />
+        <entry key="..\:/HealingMessage/app/src/main/res/layout/main_actionbar.xml" value="0.18" />
+        <entry key="..\:/HealingMessage/app/src/main/res/layout/main_toolbar.xml" value="0.1" />
         <entry key="..\:/HealingMessage/app/src/main/res/layout/splash.xml" value="0.1" />
       </map>
     </option>
