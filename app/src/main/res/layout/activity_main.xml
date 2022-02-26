@@ -6,17 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <include
+        layout="@layout/main_actionbar"
+        android:id="@+id/main_actionbar"
+        />
+
     <TextView
         android:id="@+id/textview_month"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
         android:text="02"
         android:textColor="@color/black"
         android:textSize="@dimen/text_size_month"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/main_actionbar" />
 
     <TextView
         android:id="@+id/textview_year"

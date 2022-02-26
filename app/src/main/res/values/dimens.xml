@@ -3,6 +3,9 @@
     <dimen name="text_size_month">19sp</dimen>
     <dimen name="text_size_year">11sp</dimen>
     <dimen name="text_size_day">11sp</dimen>
-    <dimen name="calendar_emotion_size">31dp</dimen>
     <dimen name="calendar_item_width">45dp</dimen>
+    <dimen name="calendar_emotion_size">31dp</dimen>
+    <dimen name="actionbar_height">53dp</dimen>
+    <dimen name="actionbarbar_icon_width">25dp</dimen>
+    <dimen name="actionbarbar_icon_height">25dp</dimen>
 </resources>

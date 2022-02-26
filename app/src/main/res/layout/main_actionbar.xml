@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="main_actionbar"
+            type="com.example.healingmessage.MainActivity" />
+    </data>
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/actionbar_height">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageview_notification"
+                android:layout_width="@dimen/actionbarbar_icon_width"
+                android:layout_height="@dimen/actionbarbar_icon_height"
+                android:layout_marginTop="14dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="14dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imageview_message"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/bell_ic" />
+
+            <ImageView
+                android:id="@+id/imageview_message"
+                android:layout_width="@dimen/actionbarbar_icon_width"
+                android:layout_height="@dimen/actionbarbar_icon_height"
+                android:layout_marginTop="14dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="14dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imageview_profile"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/messenger" />
+
+            <ImageView
+                android:id="@+id/imageview_profile"
+                android:layout_width="@dimen/actionbarbar_icon_width"
+                android:layout_height="@dimen/actionbarbar_icon_height"
+                android:layout_marginTop="14dp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginBottom="14dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                app:srcCompat="@drawable/user_ic" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.appcompat.widget.Toolbar>
+</layout>
