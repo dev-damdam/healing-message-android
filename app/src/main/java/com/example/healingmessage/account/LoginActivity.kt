@@ -44,7 +44,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun login() {
-        val res = FirebaseBaseSingleton.getInstance().login("dev.sodam@gmail.com", "test123!")
+        val res = FirebaseBaseSingleton.getInstance().login("dev.sodam@gmail.com", "test1234567")
 
         res?.addOnCompleteListener { task ->
             if(task.isSuccessful) {
