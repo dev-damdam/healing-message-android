@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="text_size_month">20sp</dimen>
-    <dimen name="text_size_year">13sp</dimen>
+    <dimen name="text_size_month">19sp</dimen>
+    <dimen name="text_size_year">11sp</dimen>
+    <dimen name="text_size_day">11sp</dimen>
+    <dimen name="calendar_emotion_size">31dp</dimen>
+    <dimen name="calendar_item_width">45dp</dimen>
 </resources>

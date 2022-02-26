@@ -13,6 +13,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="30dp"
         android:text="02"
+        android:textColor="@color/black"
         android:textSize="@dimen/text_size_month"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,6 +25,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="4dp"
         android:text="2022"
+        android:textColor="@color/black"
         android:textSize="@dimen/text_size_year"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textview_month" />
@@ -33,29 +35,33 @@
         android:layout_width="369dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16.5dp"
         android:layout_marginEnd="20dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textview_year" />
+        app:layout_constraintTop_toBottomOf="@+id/button_prev_month" />
 
     <Button
         android:id="@+id/button_prev_month"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="236dp"
-        android:text="prev"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button_next_month" />
+        android:layout_width="7dp"
+        android:layout_height="11.4dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="21.5dp"
+        android:background="@drawable/arrow_left"
+        app:layout_constraintEnd_toStartOf="@+id/button_next_month"
+        app:layout_constraintTop_toBottomOf="@+id/textview_year" />
 
     <Button
         android:id="@+id/button_next_month"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="next"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:layout_width="7dp"
+        android:layout_height="11.4dp"
+        android:layout_marginEnd="46.5dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/arrow_right"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview_year"
+        tools:layout_editor_absoluteY="76dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
